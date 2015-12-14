@@ -1,4 +1,4 @@
-package com.mx.web.model;
+package com.mx.web.data;
 
 public class Greeting {
 
