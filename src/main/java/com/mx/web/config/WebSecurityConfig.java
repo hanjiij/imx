@@ -24,7 +24,7 @@
 //	protected void configure(HttpSecurity http) throws Exception {
 //		http.addFilterBefore(loginFilter, ChannelProcessingFilter.class);
 //	}
-//
+
 //	@Autowired
 //	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 //		auth.inMemoryAuthentication().withUser("user").password("password").roles("USER");
