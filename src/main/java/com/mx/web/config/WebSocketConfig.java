@@ -14,7 +14,7 @@ import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 public class WebSocketConfig extends AbstractSessionWebSocketMessageBrokerConfigurer<ExpiringSession> {
 
 	public void configureStompEndpoints(StompEndpointRegistry registry) {
-		registry.addEndpoint("/hello").setAllowedOrigins("127.0.0.1").withSockJS();
+		registry.addEndpoint("/hello").setAllowedOrigins("http://127.0.0.1:8020").withSockJS();
 	}
 	
 	public void configureMessageBroker(MessageBrokerRegistry config) {

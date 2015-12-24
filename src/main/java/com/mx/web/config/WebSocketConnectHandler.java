@@ -17,7 +17,7 @@ package com.mx.web.config;
 
 import java.security.Principal;
 import java.util.Arrays;
-import java.util.Calendar;
+import java.util.Date;
 
 import org.springframework.context.ApplicationListener;
 import org.springframework.messaging.MessageHeaders;
@@ -25,15 +25,14 @@ import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.web.socket.messaging.SessionConnectEvent;
 
-import com.mx.web.data.ActiveWebSocketUser;
-
-import sample.data.ActiveWebSocketUserRepository;
+import com.mx.web.bean.User;
+import com.mx.web.service.UserRepository;
 
 public class WebSocketConnectHandler<S> implements ApplicationListener<SessionConnectEvent> {
-	private ActiveWebSocketUserRepository repository;
+	private UserRepository repository;
 	private SimpMessageSendingOperations messagingTemplate;
 
-	public WebSocketConnectHandler(SimpMessageSendingOperations messagingTemplate, ActiveWebSocketUserRepository repository) {
+	public WebSocketConnectHandler(SimpMessageSendingOperations messagingTemplate, UserRepository repository) {
 		super();
 		this.messagingTemplate = messagingTemplate;
 		this.repository = repository;
@@ -46,7 +45,7 @@ public class WebSocketConnectHandler<S> implements ApplicationListener<SessionCo
 			return;
 		}
 		String id = SimpMessageHeaderAccessor.getSessionId(headers);
-		repository.save(new ActiveWebSocketUser(id, user.getName(), Calendar.getInstance()));
+		repository.save(new User(id, user.getName(), new Date()));
 		messagingTemplate.convertAndSend("/topic/friends/signin", Arrays.asList(user.getName()));
 	}
 }

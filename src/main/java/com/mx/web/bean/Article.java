@@ -1,4 +1,4 @@
-package com.mx.web.data;
+package com.mx.web.bean;
 
 import java.util.Date;
 

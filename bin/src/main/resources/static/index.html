@@ -2,10 +2,8 @@
 <html>
 <head>
     <title>Hello WebSocket</title>
-    <link href="assets/lib/prism/prism.css" rel="stylesheet">
-    <script src="assets/lib/prism/prism.js"></script>
-    <script src="assets/lib/socket/sockjs-1.0.3.min.js"></script>
-    <script src="assets/lib/socket/stomp.js"></script>
+    <script src="assets/js/lib/sockjs-1.0.3.min.js"></script>
+    <script src="assets/js/lib/stomp.js"></script>
     <script type="text/javascript">
         var stompClient = null;
 
@@ -63,22 +61,6 @@
         <button id="sendName" onclick="sendName();">Send</button>
         <p id="response"></p>
     </div>
-    <pre>
-    <code class="language-java">
-function sendName() {
-    var name = document.getElementById('name').value;
-    stompClient.send("192.168.31.210:8080/app/hello", {}, JSON.stringify({ 'name': name }));
-}
-
-function showGreeting(message) {
-    var response = document.getElementById('response');
-    var p = document.createElement('p');
-    p.style.wordWrap = 'break-word';
-    p.appendChild(document.createTextNode(message));
-    response.appendChild(p);
-}
-	</code>
-	</pre>
 </div>
 </body>
 </html>
